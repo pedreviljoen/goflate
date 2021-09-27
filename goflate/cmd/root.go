@@ -21,11 +21,15 @@ import (
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
-
-	"github.com/pedreviljoen/go-flate/core"
 )
 
 var cfgFile string
+
+var (
+	originalFile  string
+	newFile       string
+	compressLevel int
+)
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -44,51 +48,7 @@ func Execute() {
 }
 
 func init() {
-	var (
-		originalFile  string
-		newFile       string
-		compressLevel int
-	)
 	cobra.OnInitialize(initConfig)
-
-	var compressCmd = &cobra.Command{
-		Use:   "compress",
-		Short: "Compress file specified in arguments",
-		Run: func(cmd *cobra.Command, args []string) {
-			res, err := core.Compress(originalFile, newFile, compressLevel)
-			if err != nil {
-				fmt.Println("An error occured")
-				os.Exit(1)
-			}
-
-			fmt.Println("Compression results: \n")
-			fmt.Println(fmt.Sprintln("Before compression size (bytes):\n", res.BeforeStats.Size))
-			fmt.Println(fmt.Sprintln("After compression size (bytes):\n", res.AfterStats.Size))
-		},
-	}
-	compressCmd.PersistentFlags().StringVarP(&originalFile, "file", "f", "test.txt", "Name of the file to compress")
-	compressCmd.PersistentFlags().StringVarP(&newFile, "out", "o", "test-output.compressed", "Name of the new compressed output file")
-	compressCmd.PersistentFlags().IntVar(&compressLevel, "level", 5, "Level of compression. From 1 (best speed) to 9 (best compression)")
-	rootCmd.AddCommand(compressCmd)
-
-	var decompressCmd = &cobra.Command{
-		Use:   "decompress",
-		Short: "Decompress file specified in arguments",
-		Run: func(cmd *cobra.Command, args []string) {
-			res, err := core.Decompress(originalFile, newFile)
-			if err != nil {
-				fmt.Println("An error occured")
-				os.Exit(1)
-			}
-
-			fmt.Println("Compression results: \n")
-			fmt.Println(fmt.Sprintln("Before decompression size (bytes):\n", res.BeforeStats.Size))
-			fmt.Println(fmt.Sprintln("After decompression size (bytes):\n", res.AfterStats.Size))
-		},
-	}
-	decompressCmd.PersistentFlags().StringVarP(&originalFile, "file", "f", "test.txt", "Name of the file to compress")
-	decompressCmd.PersistentFlags().StringVarP(&newFile, "out", "o", "test-output.compressed", "Name of the new compressed output file")
-	rootCmd.AddCommand(decompressCmd)
 }
 
 // initConfig reads in config file and ENV variables if set.
