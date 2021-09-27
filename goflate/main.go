@@ -15,7 +15,7 @@ limitations under the License.
 */
 package main
 
-import "goflate/cmd"
+import "github.com/pedreviljoen/goflate/cmd"
 
 func main() {
 	cmd.Execute()
