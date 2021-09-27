@@ -1,4 +1,4 @@
-module github.com/pedreviljoen/goflate
+module github.com/pedreviljoen/go-flate/goflate
 
 go 1.16
 
