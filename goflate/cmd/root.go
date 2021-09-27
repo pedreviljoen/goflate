@@ -20,8 +20,9 @@ import (
 	"os"
 
 	"github.com/spf13/cobra"
-
 	"github.com/spf13/viper"
+
+	"github.com/pedreviljoen/go-flate/core"
 )
 
 var cfgFile string
@@ -29,16 +30,11 @@ var cfgFile string
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "goflate",
-	Short: "A brief description of your application",
-	Long: `A longer description that spans multiple lines and likely contains
-examples and usage of using your application. For example:
+	Short: "A small and simple compression CLI tool",
+	Long: `A Golang compression CLI which makes use of the Golang standard library Flate for compression.
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
-	// Uncomment the following line if your bare application
-	// has an action associated with it:
-	// Run: func(cmd *cobra.Command, args []string) { },
+	Checks compression results, before and after
+	`,
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
@@ -48,17 +44,32 @@ func Execute() {
 }
 
 func init() {
+	var (
+		originalFile  string
+		newFile       string
+		compressLevel int
+	)
 	cobra.OnInitialize(initConfig)
 
-	// Here you will define your flags and configuration settings.
-	// Cobra supports persistent flags, which, if defined here,
-	// will be global for your application.
+	var compressCmd = &cobra.Command{
+		Use:   "compress",
+		Short: "Compress file specified in arguments",
+		Run: func(cmd *cobra.Command, args []string) {
+			res, err := core.Compress(originalFile, newFile, compressLevel)
+			if err != nil {
+				fmt.Println("An error occured")
+				os.Exit(1)
+			}
 
-	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.goflate.yaml)")
-
-	// Cobra also supports local flags, which will only run
-	// when this action is called directly.
-	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+			fmt.Println("Compression results: \n")
+			fmt.Println("Before compression size: %d \n", res.BeforeStats.Size)
+			fmt.Println("After compression size: %d \n", res.AfterStats.Size)
+		},
+	}
+	compressCmd.PersistentFlags().StringVarP(&originalFile, "file", "f", "test.txt", "Name of the file to compress")
+	compressCmd.PersistentFlags().StringVarP(&newFile, "out", "o", "test-output.compressed", "Name of the new compressed output file")
+	compressCmd.PersistentFlags().IntVar(&compressLevel, "level", 5, "Level of compression. From 1 (best speed) to 9 (best compression)")
+	rootCmd.AddCommand(compressCmd)
 }
 
 // initConfig reads in config file and ENV variables if set.

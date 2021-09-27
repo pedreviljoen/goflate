@@ -3,6 +3,7 @@ package core
 import (
 	"compress/flate"
 	"errors"
+	"fmt"
 	"io"
 	"os"
 
@@ -37,6 +38,7 @@ func Compress(filenameOriginal string, filenameNew string, compressionLevel int)
 		return nil, err
 	}
 	*/
+	fmt.Println("Entering compression with: ", filenameOriginal)
 
 	// Check if file exists
 	_, err := fileExists(filenameOriginal)
@@ -53,7 +55,7 @@ func Compress(filenameOriginal string, filenameNew string, compressionLevel int)
 	beforeCompress := calculateFileStats(filenameOriginal)
 
 	// Compress and obtain after compression stats
-	outputFile, err := os.Open(filenameOriginal)
+	outputFile, err := os.Create(filenameNew)
 	if err != nil {
 		return nil, err
 	}
