@@ -3,7 +3,6 @@ package core
 import (
 	"compress/flate"
 	"errors"
-	"fmt"
 	"io"
 	"os"
 
@@ -38,8 +37,6 @@ func Compress(filenameOriginal string, filenameNew string, compressionLevel int)
 		return nil, err
 	}
 	*/
-	fmt.Println("Entering compression with: ", filenameOriginal)
-
 	// Check if file exists
 	_, err := fileExists(filenameOriginal)
 	if err != nil {
