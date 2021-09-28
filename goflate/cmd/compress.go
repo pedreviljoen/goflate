@@ -41,8 +41,6 @@ var compressCmd = &cobra.Command{
 }
 
 func init() {
-	rootCmd.AddCommand(compressCmd)
-
 	// Here you will define your flags and configuration settings.
 
 	compressCmd.PersistentFlags().StringVarP(&originalFile, "file", "f", "test.txt", "Name of the file to compress")

@@ -41,8 +41,6 @@ var decompressCmd = &cobra.Command{
 }
 
 func init() {
-	rootCmd.AddCommand(decompressCmd)
-
 	// Here you will define your flags and configuration settings.
 	decompressCmd.PersistentFlags().StringVarP(&originalFile, "file", "f", "test.txt", "Name of the file to compress")
 	decompressCmd.PersistentFlags().StringVarP(&newFile, "out", "o", "test-output.compressed", "Name of the new compressed output file")

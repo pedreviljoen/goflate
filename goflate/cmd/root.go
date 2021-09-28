@@ -35,10 +35,6 @@ var (
 var rootCmd = &cobra.Command{
 	Use:   "goflate",
 	Short: "A small and simple compression CLI tool",
-	Long: `A Golang compression CLI which makes use of the Golang standard library Flate for compression.
-
-	Checks compression results, before and after
-	`,
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
