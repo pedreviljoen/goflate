@@ -42,7 +42,6 @@ var compressCmd = &cobra.Command{
 
 func init() {
 	// Here you will define your flags and configuration settings.
-
 	compressCmd.PersistentFlags().StringVarP(&originalFile, "file", "f", "test.txt", "Name of the file to compress")
 	compressCmd.PersistentFlags().StringVarP(&newFile, "out", "o", "test-output.compressed", "Name of the new compressed output file")
 	compressCmd.PersistentFlags().IntVar(&compressLevel, "level", 5, "Level of compression. From 1 (best speed) to 9 (best compression)")
