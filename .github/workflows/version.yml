@@ -19,7 +19,7 @@ jobs:
         uses: gittools/actions/gitversion/setup@v0.9.7
         with:
           versionSpec: '5.5.0'
-      - name: Determine Version
+      - name: gitversion
         uses: gittools/actions/gitversion/execute@v0.9.7
         with:
           useConfigFile: true
@@ -39,5 +39,6 @@ jobs:
       - name: Push tags
         run: |
           echo $SEMVER
+          git tag $SEMVER
           git push origin --tags
 
