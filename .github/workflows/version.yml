@@ -14,16 +14,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Determine Version
-          uses: gittools/actions/gitversion/execute@v0.9.7
-          id: gitversion
-          with:
-            useConfigFile: true
+        uses: gittools/actions/gitversion/execute@v0.9.7
+        id: gitversion
+        with:
+          useConfigFile: true
   push-tags:
     name: Push Tags
     runs-on: ubuntu-latest
     needs: tag
-      env:
-        SEMVER: ${{ needs.tag.outputs.semVer }}
+    env:
+      SEMVER: ${{ needs.tag.outputs.semVer }}
     steps:
       - name: Push tags
         run: |
