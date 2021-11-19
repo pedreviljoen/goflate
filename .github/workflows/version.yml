@@ -15,8 +15,15 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v0.9.7
+        with:
+          versionSpec: '5.5.0'
       - name: Determine Version
-        uses: GitTools/actions@v0.9.9
+        uses: gittools/actions/gitversion/execute@v0.9.7
+        with:
+          useConfigFile: true
+          configFilePath: GitVerion.yml
   push-tags:
     name: Push Tags
     runs-on: ubuntu-latest
