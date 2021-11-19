@@ -29,7 +29,7 @@ jobs:
         uses: gittools/actions/gitversion/execute@v0.9.7
         with:
           useConfigFile: true
-          configFilePath: GitVerion.yml
+          configFilePath: GitVersion.yml
 
   push-tags:
     name: Push Tags
