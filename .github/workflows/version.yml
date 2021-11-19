@@ -26,20 +26,20 @@ jobs:
           useConfigFile: true
           configFilePath: GitVersion.yml
 
-  push-tags:
-    name: Push Tags
-    runs-on: ubuntu-latest
-    needs: tag
-    env:
-      SEMVER: ${{ needs.tag.outputs.semVer }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Push tags
-        run: |
-          echo $SEMVER
-          git tag $SEMVER
-          git push origin --tags
+#  push-tags:
+#    name: Push Tags
+#    runs-on: ubuntu-latest
+#    needs: tag
+#    env:
+#      SEMVER: ${{ needs.tag.outputs.semVer }}
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v2
+#        with:
+#          fetch-depth: 0
+#      - name: Push tags
+#        run: |
+#          echo $SEMVER
+#          git tag $SEMVER
+#          git push origin --tags
 
