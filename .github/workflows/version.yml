@@ -16,7 +16,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Determine Version
-        uses: GitTools/actions@v0.9.10
+        uses: GitTools/actions@v0.9.9
   push-tags:
     name: Push Tags
     runs-on: ubuntu-latest
