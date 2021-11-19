@@ -1,4 +1,4 @@
-mode: ContinuousDelivery
+mode: MainLine
 ignore:
   sha: []
 merge-message-formats: {}

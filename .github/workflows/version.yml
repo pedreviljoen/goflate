@@ -6,7 +6,7 @@ on:
 
 jobs:
   tag:
-    name: Tag
+    name: Tagging
     runs-on: ubuntu-latest
     outputs:
       semVer: ${{ steps.gitversion.outputs.majorMinorPatch }}
