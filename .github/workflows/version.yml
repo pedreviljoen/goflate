@@ -17,6 +17,7 @@ jobs:
   tag:
     name: Tag
     runs-on: ubuntu-latest
+    needs: install
     outputs:
       semVer: ${{ steps.gitversion.outputs.semVer }}
     steps:
