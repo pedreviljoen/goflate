@@ -18,6 +18,7 @@ jobs:
         id: gitversion
         with:
           useConfigFile: true
+          configFilePath: GitVersion.yml
   push-tags:
     name: Push Tags
     runs-on: ubuntu-latest
