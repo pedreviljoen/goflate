@@ -16,6 +16,7 @@ type CompressionResult struct {
 
 func CalculateFileStats(file string) *CompressStats {
 	fi, err := os.Stat(file)
+	// error handling
 	if err != nil {
 		return nil
 	}
