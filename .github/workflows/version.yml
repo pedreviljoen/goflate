@@ -32,6 +32,10 @@ jobs:
     env:
       SEMVER: ${{ needs.tag.outputs.semVer }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Push tags
         run: |
           echo $SEMVER
