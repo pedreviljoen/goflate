@@ -22,7 +22,6 @@ jobs:
           tag_prefix: "v"
           major_pattern: "/^(breaking|major|change): .*$/"
           minor_pattern: "/^(build|feat|enhance): .*$/"
-          patch_pattern: "/^(chore|ci|docs|feat|fix|refactor|revert|test): .*$/"
           format: "${major}.${minor}.${patch}"
           short_tags: false
           bump_each_commit: false
