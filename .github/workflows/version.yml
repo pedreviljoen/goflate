@@ -19,9 +19,9 @@ jobs:
         uses: paulhatch/semantic-version@v4.0.2
         id: versioning
         with:
-          tag_prefix: "v"
+          tag_prefix: ""
           major_pattern: "/^(breaking|major|change): .*$/"
-          minor_pattern: "/^(build|feat|enhance): .*$/"
+          minor_pattern: "/^(build|feat|enhance|fix|chore): .*$/"
           format: "${major}.${minor}.${patch}"
           short_tags: false
           bump_each_commit: false
@@ -35,3 +35,5 @@ jobs:
       - name: Push Tags
         run: |
           echo $VER
+          git tag -a $VER
+          git push origin --tags
