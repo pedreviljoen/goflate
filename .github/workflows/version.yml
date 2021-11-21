@@ -32,6 +32,10 @@ jobs:
     env:
       VER: ${{ needs.tag.outputs.semVer }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Push Tags
         run: |
           echo $VER
