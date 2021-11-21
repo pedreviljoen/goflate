@@ -41,5 +41,5 @@ jobs:
           echo $VER
           git config --global user.email "pedre@andcru.io"
           git config --global user.name "pedreviljoen"
-          git tag -a $VER
+          git tag -a $VER -m "tagging with version $VER"
           git push origin --tags
