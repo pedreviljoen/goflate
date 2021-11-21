@@ -1,5 +1,41 @@
 mode: ContinuousDeployment
 continuous-delivery-fallback-tag: ''
-branches: {}
+branches:
+  develop:
+    regex: ^dev(elop)?(ment)?$
+    mode: ContinuousDeployment
+    tag: alpha
+    increment: None
+    prevent-increment-of-merged-branch-version: false
+    track-merge-target: true
+    source-branches: []
+    pre-release-weight: 0
+  release:
+    regex: ^release$|^releases$
+    mode: ContinuousDeployment
+    tag: beta
+    increment: None
+    prevent-increment-of-merged-branch-version: true
+    track-merge-target: false
+    source-branches: []
+    pre-release-weight: 30000
+  feature:
+    regex: ^feature?[/-]
+    mode: ContinuousDelivery
+    tag: feat
+    increment: Minor
+    prevent-increment-of-merged-branch-version: true
+    track-merge-target: false
+    source-branches: [ 'develop' ]
+    pre-release-weight: 30000
+  fix:
+    regex: ^fix?[/-]
+    mode: ContinuousDelivery
+    tag: patch
+    increment: Patch
+    prevent-increment-of-merged-branch-version: true
+    track-merge-target: false
+    source-branches: [ 'develop' ]
+    pre-release-weight: 30000
 ignore:
   sha: []
