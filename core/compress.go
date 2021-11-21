@@ -9,13 +9,6 @@ import (
 )
 
 func Compress(filenameOriginal string, filenameNew string, compressionLevel int) (*common.CompressionResult, error) {
-	/* Check if it is needed to obtain file path, if so... Can use the below:
-
-	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
-	if err != nil {
-		return nil, err
-	}
-	*/
 	// Check if file exists
 	_, err := common.FileExists(filenameOriginal)
 	if err != nil {
