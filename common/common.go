@@ -9,6 +9,7 @@ type CompressStats struct {
 	Size int64
 }
 
+// CompressionResult - object with before and after compression results
 type CompressionResult struct {
 	BeforeStats CompressStats
 	AfterStats  CompressStats
@@ -26,6 +27,7 @@ func CalculateFileStats(file string) *CompressStats {
 	}
 }
 
+// FileExists - check if the file exists
 func FileExists(filename string) (bool, error) {
 	_, err := os.Stat(filename)
 	if errors.Is(err, os.ErrNotExist) {
