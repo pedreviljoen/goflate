@@ -14,6 +14,7 @@ type CompressionResult struct {
 	AfterStats  CompressStats
 }
 
+// CalculateFileStats - calculates size and statistics about file
 func CalculateFileStats(file string) *CompressStats {
 	fi, err := os.Stat(file)
 	if err != nil {
