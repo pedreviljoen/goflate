@@ -23,7 +23,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// decompressCmd represents the decompress command
+// decompressCmd represents the decompress command of the cli
 var decompressCmd = &cobra.Command{
 	Use:   "decompress",
 	Short: "Decompress file specified in arguments",
