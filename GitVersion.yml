@@ -6,6 +6,18 @@ branches:
     increment: None
     prevent-increment-of-merged-branch-version: true
     track-merge-target: true
+  main:
+    regex: ^main$
+    mode: ContinuousDeployment
+    increment: None
+    prevent-increment-of-merged-branch-version: true
+    track-merge-target: true
+  staging:
+    regex: ^staging
+    mode: ContinuousDeployment
+    increment: None
+    prevent-increment-of-merged-branch-version: true
+    track-merge-target: true
 major-version-bump-message: "^(major|breaking|upgrade)(\\([\\w\\s]*\\))?:"
 minor-version-bump-message: "^(feat|build|enhancement)(\\([\\w\\s]*\\))?:"
 patch-version-bump-message: "^(chore|ci|docs|fix|perf|refactor|revert|test)(\\([\\w\\s]*\\))?:"
