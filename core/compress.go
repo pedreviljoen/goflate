@@ -5,7 +5,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/pedreviljoen/go-flate/common"
+	"github.com/pedreviljoen/goflate/common"
 )
 
 func Compress(filenameOriginal string, filenameNew string, compressionLevel int) (*common.CompressionResult, error) {

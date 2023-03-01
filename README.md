@@ -11,7 +11,7 @@
 Install the binary to your local machine with the below command
 
 ```sh
-go get github.com/pedreviljoen/go-flate/goflate
+go get github.com/pedreviljoen/goflate
 ```
 
 Ensure your GOPATH variable is set to your path, if not you can do so with the below command
